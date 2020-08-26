@@ -1,58 +1,63 @@
-class Adress:
+    class Adress:
 
-    def __init__(self,
-                 cep,
-                 city,
-                 street,
-                 number,
-                 state,
-                 reference):
+        def __init__(self,
+                     cep,
+                     city,
+                     street,
+                     number,
+                     state,
+                     reference):
 
-        self.cep = cep
-        self.city = city
-        self.street = street
-        self.number = number
-        self.state = state
-        self.reference = reference
+            self.cep = cep
+            self.city = city
+            self.street = street
+            self.number = number
+            self.state = state
+            self.reference = reference
 
-##SET####
+    ##SET####
 
-    def setCep(self, cep):
-        self.cep = cep
+        def set_cep(self, cep):
+            self.cep = cep
 
-    def setCity(self, city):
-        self.city = city
+        def set_city(self, city):
+            self.city = city
 
-    def setStreet(self, street):
-        self.street = street
+        def set_street(self, street):
+            self.street = street
 
-    def setNumber(self, number):
-        self.number = number
+        def set_number(self, number):
+            self.number = number
 
-    def setState(self, state):
-        self.state = state
+        def set_state(self, state):
+            self.state = state
 
-    def setReference(self, reference):
-        self.reference = reference
-
-
-##get####
+        def set_reference(self, reference):
+            self.reference = reference
 
 
-    def getCep(self, cep):
-        return self.cep
+    ##get####
 
-    def getCity(self, city):
-        return self.city
 
-    def getStreet(self, street):
-        return self.street
+        def get_cep(self, cep):
+            return self.cep
 
-    def getNumber(self, number):
-        return self.number
+        def get_city(self, city):
+            return self.city
 
-    def getState(self, state):
-        return self.state
+        def get_street(self, street):
+            return self.street
 
-    def getReference(self, reference):
-        return self.reference
+        def get_number(self, number):
+            return self.number
+
+        def get_state(self, state):
+            return self.state
+
+        def get_reference(self, reference):
+            return self.reference
+
+
+
+
+

@@ -17,43 +17,41 @@ class SubEvent:
 
 #SET####
 
-    def setName(self, name):
+    def set_name(self, name):
         self.name = name
 
-    def setStarting(self, starting):
+    def set_starting(self, starting):
         self.starting = starting
     
   
 
-    def setEnding(self, ending):
+    def set_ending(self, ending):
         self.ending = ending
 
-    def setDescription(self, description):
+    def set_description(self, description):
         self.description = description
 
-    def setPalestrante(self, palestrante):
+    def set_palestrantes(self, palestrante):
         self.palestrante = palestrante
 
-    def setListaDeParticipanteSubEvent(self, listaDePartcipantesSubEvent):
+    def set_listaDeParticipantesSubEvent(self, listaDePartcipantesSubEvent):
         self.listaDePartcipantesSubEvent = listaDePartcipantesSubEvent
 
 #get####
 
-    def getName(self, name):
-        return self.name 
-
-    def getStarting(self, starting):
+    def get_name(self, name):
+        return self.name get_starting(self, starting):
         return self.starting 
     
 
-    def getEnding(self, ending):
+    def get_ending(self, ending):
         return self.ending 
 
-    def getDescription(self, description):
+    def get_description(self, description):
         return self.description 
 
-    def getPalestrante(self, palestrante):
+    def get_palestrantes(self, palestrante):
         return self.palestrante 
 
-    def getListaDeParticipanteSubEvent(self, listaDePartcipantesSubEvent):
+    def get_listaDeParticipantesSubEvent(self, listaDePartcipantesSubEvent):
         return self.listaDePartcipantesSubEvent 

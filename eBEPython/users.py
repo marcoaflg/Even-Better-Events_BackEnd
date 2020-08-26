@@ -40,83 +40,83 @@ class Users(Adress):
 
 #SET####
 
-    def setName(self, name):
+    def set_name(self, name):
         self.name = name
 
    
 
 
-    def setSex(self, sex):
+    def set_sex(self, sex):
         self.sex = sex
 
-    def setBirthDate(self, birthDate):
+    def set_birthDate(self, birthDate):
         self.birthDate = birthDate
     
-    def setCpf(self, cpf):
+    def set_cpf(self, cpf):
         self.cpf = cpf
 
-    def setRg(self, rg):
+    def set_rg(self, rg):
         self.rg = rg
 
 
-    def setInstitutiton(self, institution):
+    def set_institution(self, institution):
         self.institution = institution
 
-    def setRole(self, role):
+    def set_role(self, role):
         self.role = role
 
-    def setNivelDeAcesso(self, nivelDeAcesso):
+    def set_nivelDeAcesso(self, nivelDeAcesso):
         self.nivelDeAcesso = nivelDeAcesso
     
-    def setEmail(self, email):
+    def set_email(self, email):
         self.email = email
 
-    def setPassword(self, password):
+    def set_password(self, password):
         self.password = password
 
-    def setDescription(self, description):
+    def set_description(self, description):
         self.description = description
 
-    def setMedicalCares(self, medicalCares):
+    def set_medicalCares(self, medicalCares):
         self.medicalCares = medicalCares
 
 
 #GET####
 
-    def getName(self, name):
+    def get_name(self, name):
       return  self.name
   
 
-    def getSex(self, sex):
+    def get_sex(self, sex):
        return self.sex
 
-    def getBirthDate(self, birthDate):
+    def get_birthDate(self, birthDate):
        return self.birthDate 
     
-    def getCpf(self, cpf):
+    def get_cpf(self, cpf):
        return self.cpf 
 
-    def getRg(self, rg):
+    def get_rg(self, rg):
        return self.rg 
 
 
-    def getInstitutiton(self, institution):
+    def get_institution(self, institution):
        return self.institution 
 
-    def getRole(self, role):
+    def get_rle(self, role):
        return self.role 
 
-    def getNivelDeAcesso(self, nivelDeAcesso):
+    def get_nivelDeAcesso(self, nivelDeAcesso):
        return self.nivelDeAcesso 
     
-    def getEmail(self, email):
+    def get_email(self, email):
        return self.email 
 
-    def getPassword(self, password):
+    def get_password(self, password):
         return self.password 
 
-    def getDescription(self, description):
+    def get_description(self, description):
         return self.description 
 
-    def getMedicalCares(self, medicalCares):
+    def get_medicalCares(self, medicalCares):
         return self.medicalCares 

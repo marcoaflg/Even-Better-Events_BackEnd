@@ -19,45 +19,45 @@ class Events:
         self.listaDeParticipantes = listaDeParticipantes
 #SET####
 
-    def setEventName(self, eventName):
+    def set_eventName(self, eventName):
         self.eventName = eventName
 
-    def setStarting(self, starting):
+    def set_starting(self, starting):
         self.starting = starting
 
-    def setEnding(self, ending):
+    def set_ending(self, ending):
         self.ending = ending
 
-    def setDescription(self, description):
+    def set_description(self, description):
         self.description = description
 
-    def setSubEvent(self, subEvent):
+    def set_subeEvent(self, subEvent):
         self.subEvent = subEvent
 
-    def setManager(self, manager):
+    def set_manager(self, manager):
         self.manager = manager
 
-    def setListaDeParticipantes(self, listaDeParticipantes):
+    def set_listaDeParticipantes(self, listaDeParticipantes):
         self.listaDeParticipantes = listaDeParticipantes
 
 ###GET###
-    def GetEventName(self, eventName):
+    def get_eventName(self, eventName):
         return self.eventName
 
-    def getStarting(self, starting):
+    def get_starting(self, starting):
         return self.starting
 
-    def getEnding(self, ending):
+    def get_ending(self, ending):
         return self.ending
 
-    def getDescription(self, description):
+    def get_description(self, description):
         return self.description
 
-    def getSubEvent(self, subEvent):
+    def get_subEvent(self, subEvent):
         return self.subEvent
 
-    def getManager(self, manager):
+    def get_manager(self, manager):
         return self.manager
 
-    def getListaDeParticipantes(self, listaDeParticipantes):
+    def get_listaDeParticipantes(self, listaDeParticipantes):
         return self.listaDeParticipantes
