@@ -18,7 +18,10 @@ namespace EBE_Backend
             password,
             description,
             medicalCares,
-            avatarUrl;
+            avatarUrl,
+            reference;
+
+        private int number;
 
         public User(
             string name,
@@ -33,7 +36,9 @@ namespace EBE_Backend
             string password,
             string description,
             string medicalCares,
-            string avatarUrl)
+            string avatarUrl,
+            string reference,
+            int number)
         {
             this.name = name;
             this.sex = sex;
@@ -48,6 +53,8 @@ namespace EBE_Backend
             this.description = description;
             this.medicalCares = medicalCares;
             this.avatarUrl = avatarUrl;
+            this.reference = reference;
+            this.number = number;
         }
 
         public string Name { get => name; set => name = value; }
@@ -63,6 +70,8 @@ namespace EBE_Backend
         public string Description { get => description; set => description = value; }
         public string MedicalCares { get => medicalCares; set => medicalCares = value; }
         public string AvatarUrl { get => avatarUrl; set => avatarUrl = value; }
+        public string Reference { get => reference; set => reference = value; }
+        public int Number { get => number; set => number = value; }
 
         ~User()
         {
