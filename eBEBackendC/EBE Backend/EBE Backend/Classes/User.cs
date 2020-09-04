@@ -1,10 +1,13 @@
-﻿using System;
+﻿using EBE_Backend.Classes;
+using System;
 using System.Dynamic;
 
 namespace EBE_Backend
 {
     class User
     {
+        private int id;
+
         private string
             name,
             sex,
@@ -24,12 +27,13 @@ namespace EBE_Backend
         private int number;
 
         public User(
+            int id,
             string name,
             string sex,
             string birthDate,
             string cpf,
             string rg,
-            string institution,
+            //string institution,
             string role,
             string nivelDeAcesso,
             string email,
@@ -40,12 +44,13 @@ namespace EBE_Backend
             string reference,
             int number)
         {
+            this.id = id;
             this.name = name;
             this.sex = sex;
             this.birthDate = birthDate;
             this.cpf = cpf;
             this.rg = rg;
-            this.institution = institution;
+            //this.institution = institution;
             this.role = role;
             this.nivelDeAcesso = nivelDeAcesso;
             this.email = email;
@@ -57,12 +62,13 @@ namespace EBE_Backend
             this.number = number;
         }
 
+        public int ID { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public string Sex { get => sex; set => sex = value; }
         public string BirthDate { get => birthDate; set => birthDate = value; }
         public string Cpf { get => cpf; set => cpf = value; }
         public string Rg { get => rg; set => rg = value; }
-        public string Institution { get => institution; set => institution = value; }
+        //public string Institution { get => institution; set => institution = value; }
         public string Role { get => role; set => role = value; }
         public string NivelDeAcesso { get => nivelDeAcesso; set => nivelDeAcesso = value; }
         public string Email { get => email; set => email = value; }

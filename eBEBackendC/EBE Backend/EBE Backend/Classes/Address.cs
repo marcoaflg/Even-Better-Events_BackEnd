@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using MySql.Data.MySqlClient;
 
@@ -7,6 +8,8 @@ namespace EBE_Backend
 {
     class Address
     {
+        int id;
+
         private string
             cep,
             city,
@@ -14,9 +17,10 @@ namespace EBE_Backend
             country,
             state,
             district;
-            
+
 
         public Address(
+            int id,
             string cep,
             string city,
             string country,
@@ -24,6 +28,7 @@ namespace EBE_Backend
             string state,
             string district)
         {
+            this.id = id;
             this.cep = cep;
             this.city = city;
             this.country = country;
@@ -32,19 +37,52 @@ namespace EBE_Backend
             this.district = district;
         }
 
-
         public string Cep { get => cep; set => cep = value; }
         public string City { get => city; set => city = value; }
         public string Street { get => street; set => street = value; }
         public string State { get => state; set => state = value; }
         public string District { get => district; set => district = value; }
         public string Country { get => country; set => country = value; }
+        public int Id { get => id; set => id = value; }
 
         ~Address()
         {
             Console.WriteLine("Address destructor was called. Open fire!");
         }
+        public static void Create(int id,
+            string cep,
+            string city,
+            string country,
+            string street,
+            string state,
+            string district)
+        {
 
+            using var connection = new MySqlConnection(@"server=localhost;userid=Jacik;password=1234;database=ebedata");
+
+            connection.Open();
+
+            MySqlCommand cmd = new MySqlCommand
+            {
+                Connection = connection
+            };
+
+            try
+            {
+                cmd.CommandText = "INSERT INTO Address (CEP, city, country, street, state, district) VALUES ( '" + cep + "', '" + city + "', '" + country + "', '" + street + "', '" + state + "', '" + district + "');";
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("cadastrado!");
+            }
+            catch
+            {
+                Console.WriteLine("Erro ao cadastrar!");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+        }
         public static void ReadTable()
         {
             string url = @"server=localhost;userid=Jacik;password=1234;database=ebedata";
@@ -64,7 +102,7 @@ namespace EBE_Backend
                 while (reader.Read())
                 {
                     Console.WriteLine("Id: {0}, cep: {1}, city: {2}, coountry: {3}, street: {4}, state: {5}, district: {6}",
-                        reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5));
+                        reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
                 }
             }
             catch
@@ -75,12 +113,15 @@ namespace EBE_Backend
             {
                 connection.Close();
             }
-
-
         }
-        public static void CadastrarUser(string name, string birthDate, string acessLevel, string email, string password)
+        public static void Update(int id,
+           string cep,
+           string city,
+           string country,
+           string street,
+           string state,
+           string district)
         {
-
             using var connection = new MySqlConnection(@"server=localhost;userid=Jacik;password=1234;database=ebedata");
 
             connection.Open();
@@ -92,22 +133,20 @@ namespace EBE_Backend
 
             try
             {
-                cmd.CommandText = "INSERT INTO User (name, birthDate, acessLevel, email, password) VALUES ( '" + name + "', '" + birthDate + "', '" + acessLevel + "', '" + email + "', '" + password + "');";
+                cmd.CommandText = "update Address set cep= '" + cep + "', city = '" + city + "', country = '" + country + "', street = '" + street + "', state = '" + state + "', district = '" + district + "' where id =" + id + ";";
                 cmd.ExecuteNonQuery();
-                Console.WriteLine("cadastrado!");
+                Console.WriteLine("Atualizado!");
             }
             catch
             {
-                Console.WriteLine("Erro ao cadastrar!");
+                Console.WriteLine("Erro ao Atualizado!");
             }
             finally
             {
                 connection.Close();
             }
-
         }
-
-        public static void DeleteUser(int id)
+        public static void Delete(int id)
         {
             using var connection = new MySqlConnection(@"server=localhost;userid=Jacik;password=1234;database=ebedata");
 
@@ -120,7 +159,7 @@ namespace EBE_Backend
 
             try
             {
-                cmd.CommandText = "delete from User where Id = " + id + ";";
+                cmd.CommandText = "delete from Address where Id = " + id + ";";
                 cmd.ExecuteNonQuery();
                 Console.WriteLine("id" + id + "deletado");
             }
@@ -132,7 +171,6 @@ namespace EBE_Backend
             {
                 connection.Close();
             }
-        }
+        } 
     }
-    
 }
