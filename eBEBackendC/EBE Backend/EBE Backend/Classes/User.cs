@@ -1,12 +1,13 @@
 ﻿using EBE_Backend.Classes;
 using System;
 using System.Dynamic;
+using MySql.Data.MySqlClient;
 
 namespace EBE_Backend
 {
     class User
     {
-        private int id;
+        private int id, institutionId;
 
         private string
             name,
@@ -14,7 +15,6 @@ namespace EBE_Backend
             birthDate,
             cpf,
             rg,
-            institution,
             role,
             nivelDeAcesso,
             email,
@@ -33,7 +33,7 @@ namespace EBE_Backend
             string birthDate,
             string cpf,
             string rg,
-            //string institution,
+            int institutionId,
             string role,
             string nivelDeAcesso,
             string email,
@@ -50,7 +50,7 @@ namespace EBE_Backend
             this.birthDate = birthDate;
             this.cpf = cpf;
             this.rg = rg;
-            //this.institution = institution;
+            this.institutionId = institutionId;
             this.role = role;
             this.nivelDeAcesso = nivelDeAcesso;
             this.email = email;
@@ -68,7 +68,7 @@ namespace EBE_Backend
         public string BirthDate { get => birthDate; set => birthDate = value; }
         public string Cpf { get => cpf; set => cpf = value; }
         public string Rg { get => rg; set => rg = value; }
-        //public string Institution { get => institution; set => institution = value; }
+        public int InstitutionId { get => institutionId; set => institutionId = value; }
         public string Role { get => role; set => role = value; }
         public string NivelDeAcesso { get => nivelDeAcesso; set => nivelDeAcesso = value; }
         public string Email { get => email; set => email = value; }

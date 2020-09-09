@@ -8,7 +8,7 @@ namespace EBE_Backend
 {
     class Address
     {
-        int id;
+        private int id;
 
         private string
             cep,
@@ -17,7 +17,6 @@ namespace EBE_Backend
             country,
             state,
             district;
-
 
         public Address(
             int id,
@@ -45,19 +44,13 @@ namespace EBE_Backend
         public string Country { get => country; set => country = value; }
         public int Id { get => id; set => id = value; }
 
+
         ~Address()
         {
             Console.WriteLine("Address destructor was called. Open fire!");
         }
-        public static void Create(int id,
-            string cep,
-            string city,
-            string country,
-            string street,
-            string state,
-            string district)
+        public void Create()
         {
-
             using var connection = new MySqlConnection(@"server=localhost;userid=Jacik;password=1234;database=ebedata");
 
             connection.Open();
@@ -69,13 +62,13 @@ namespace EBE_Backend
 
             try
             {
-                cmd.CommandText = "INSERT INTO Address (CEP, city, country, street, state, district) VALUES ( '" + cep + "', '" + city + "', '" + country + "', '" + street + "', '" + state + "', '" + district + "');";
+                cmd.CommandText = "INSERT INTO Address (CEP, city, country, street, state, district) VALUES ( '" + this.cep + "', '" + this.city + "', '" + this.country + "', '" + this.street + "', '" + this.state + "', '" + this.district + "');";
                 cmd.ExecuteNonQuery();
                 Console.WriteLine("cadastrado!");
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Erro ao cadastrar!");
+                Console.WriteLine(ex);
             }
             finally
             {
@@ -83,7 +76,7 @@ namespace EBE_Backend
             }
 
         }
-        public static void ReadTable()
+        public void ReadTable()
         {
             string url = @"server=localhost;userid=Jacik;password=1234;database=ebedata";
 
@@ -105,22 +98,66 @@ namespace EBE_Backend
                         reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Erro ao ler");
+                Console.WriteLine(ex);
             }
             finally
             {
                 connection.Close();
             }
         }
-        public static void Update(int id,
-           string cep,
-           string city,
-           string country,
-           string street,
-           string state,
-           string district)
+
+        public Address GetById(int id)
+        {
+            string url = @"server=localhost;userid=Jacik;password=1234;database=ebedata";
+
+            using var connection = new MySqlConnection(url);
+
+            connection.Open();
+
+            string statement = "select * from Address";
+
+            using var cmd = new MySqlCommand(statement, connection);
+
+            using MySqlDataReader reader = cmd.ExecuteReader();
+
+            try
+            {
+                while (reader.Read())
+                {
+                    if(reader.GetInt32(0) == id)
+                    {
+                        this.id = reader.GetInt32(0);
+                        this.cep = reader.GetString(1);
+                        this.city = reader.GetString(2); 
+                        this.country = reader.GetString(3);
+                        this.street = reader.GetString(4); 
+                        this.state = reader.GetString(5); 
+                        this.district = reader.GetString(6);
+
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                
+                connection.Close();
+            }
+
+            return this;
+        }
+
+        public void Update()
         {
             using var connection = new MySqlConnection(@"server=localhost;userid=Jacik;password=1234;database=ebedata");
 
@@ -133,20 +170,20 @@ namespace EBE_Backend
 
             try
             {
-                cmd.CommandText = "update Address set cep= '" + cep + "', city = '" + city + "', country = '" + country + "', street = '" + street + "', state = '" + state + "', district = '" + district + "' where id =" + id + ";";
+                cmd.CommandText = "update Address set cep= '" + this.cep + "', city = '" + this.city + "', country = '" + this.country + "', street = '" + this.street + "', state = '" + this.state + "', district = '" + this.district + "' where id =" + this.id + ";";
                 cmd.ExecuteNonQuery();
                 Console.WriteLine("Atualizado!");
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Erro ao Atualizado!");
+                Console.WriteLine(ex);
             }
             finally
             {
                 connection.Close();
             }
         }
-        public static void Delete(int id)
+        public void Delete()
         {
             using var connection = new MySqlConnection(@"server=localhost;userid=Jacik;password=1234;database=ebedata");
 
@@ -159,13 +196,13 @@ namespace EBE_Backend
 
             try
             {
-                cmd.CommandText = "delete from Address where Id = " + id + ";";
+                cmd.CommandText = "delete from Address where Id = " + this.id + ";";
                 cmd.ExecuteNonQuery();
-                Console.WriteLine("id" + id + "deletado");
+                Console.WriteLine("id" + this.id + "deletado");
             }
-            catch
+            catch (Exception ex)
             {
-                Console.WriteLine("Erro ao deletar!");
+                Console.WriteLine(ex);
             }
             finally
             {
